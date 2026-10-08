@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>cloths – Kurtas, Sarees & Lehengas</title>
+<meta name="description" content="Shop kurtas, sarees and lehengas at cloths. Order on WhatsApp." />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #fdf8f2;
+  --warm-white: #fffcf7;
+  --deep-brown: #2c1a0e;
+  --mid-brown: #6b3f1f;
+  --gold: #c89b4a;
+  --gold-light: #e8c97a;
+  --text: #3a2212;
+  --text-muted: #7a5c44;
+  --border: #e8d8c4;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(253,248,242,.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--deep-brown); text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-size: .92rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+.btn-cart { background: var(--deep-brown); color: var(--gold-light); border: none; padding: 9px 20px; border-radius: 30px; font-size: .85rem; cursor: pointer; transition: background .2s; }
+.btn-cart:hover { background: var(--mid-brown); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; background: none; border: none; cursor: pointer; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--deep-brown); border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; inset: 0; background: var(--warm-white); z-index: 2000; padding: 90px 8% 40px; flex-direction: column; gap: 1.5rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--deep-brown); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+.mobile-close { position: absolute; top: 18px; right: 22px; font-size: 1.6rem; background: none; border: none; cursor: pointer; color: var(--deep-brown); }
+
+/* HERO */
+#home { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; background: var(--deep-brown); }
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(44,26,14,.75) 0%, rgba(107,63,31,.4) 70%), url('images/hero.jpeg') center/cover no-repeat, var(--deep-brown);
+}
+.hero-content { position: relative; z-index: 1; padding: 6% 8%; max-width: 700px; }
+.hero-content h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 7vw, 4.8rem); font-weight: 600; color: #fff; line-height: 1.1; margin-bottom: 1.2rem; }
+.hero-content p { color: rgba(255,255,255,.85); font-size: clamp(1rem, 2vw, 1.12rem); line-height: 1.7; margin-bottom: 2rem; max-width: 460px; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--deep-brown); border: none; padding: 14px 34px; border-radius: 40px; font-size: .95rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: background .25s; }
+.btn-primary:hover { background: var(--gold-light); }
+
+/* SECTIONS */
+section { padding: 80px 8%; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 600; color: var(--deep-brown); line-height: 1.2; margin-bottom: .6rem; }
+.section-sub { color: var(--text-muted); font-size: .95rem; margin-bottom: 2.2rem; }
+
+/* CATEGORIES */
+#shop { background: var(--warm-white); }
+.category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+.cat-card { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #efe3d2; aspect-ratio: 4/5; cursor: pointer; padding: 0; text-align: left; }
+.cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.cat-card:hover img { transform: scale(1.04); }
+.cat-label { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.2rem 1.1rem 1rem; background: linear-gradient(transparent, rgba(44,26,14,.85)); color: #fff; }
+.cat-label strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; }
+.cat-label span { font-size: .82rem; color: var(--gold-light); }
+
+/* PRODUCTS */
+.filters { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.filter { background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 20px; border-radius: 30px; font-size: .85rem; cursor: pointer; transition: all .2s; }
+.filter:hover { border-color: var(--gold); }
+.filter.active { background: var(--deep-brown); border-color: var(--deep-brown); color: var(--gold-light); }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.5rem; }
+.product-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.product-img { aspect-ratio: 4/5; background: #efe3d2; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; color: var(--text-muted); font-size: .85rem; }
+.product-img img { width: 100%; height: 100%; object-fit: cover; }
+.product-info { padding: 1rem 1.2rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
+.product-info h3 { font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+.product-info .cat { font-size: .8rem; color: var(--text-muted); }
+.price { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--mid-brown); margin-top: .5rem; }
+.btn-add { width: 100%; margin-top: auto; background: var(--deep-brown); color: var(--gold-light); border: none; padding: 11px; border-radius: 10px; font-size: .88rem; cursor: pointer; transition: background .2s; }
+.product-info .price + .btn-add { margin-top: .9rem; }
+.btn-add:hover { background: var(--mid-brown); }
+
+/* CONTACT */
+#contact { background: var(--deep-brown); color: #fff; }
+#contact .section-title { color: #fff; }
+#contact .section-sub { color: rgba(255,255,255,.7); }
+.contact-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-outline { display: inline-block; border: 1px solid rgba(255,255,255,.5); color: #fff; padding: 14px 34px; border-radius: 40px; font-size: .95rem; text-decoration: none; transition: border-color .2s, color .2s; }
+.btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+/* FOOTER */
+footer { background: #1d1109; color: rgba(255,255,255,.6); padding: 28px 8%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .6rem; font-size: .82rem; }
+footer a { text-decoration: none; color: var(--gold-light); }
+
+/* CART */
+.overlay { display: none; position: fixed; inset: 0; background: rgba(44,26,14,.5); z-index: 3000; }
+.overlay.open { display: block; }
+.cart-drawer { position: fixed; top: 0; right: -440px; width: 400px; max-width: 95vw; height: 100%; background: var(--warm-white); z-index: 3001; transition: right .35s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; padding: 1.6rem; }
+.cart-drawer.open { right: 0; }
+.cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.cart-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; }
+.cart-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+.cart-list { flex: 1; overflow-y: auto; }
+.cart-empty { color: var(--text-muted); text-align: center; padding: 3rem 1rem; font-size: .92rem; line-height: 1.6; }
+.cart-item { display: grid; grid-template-columns: 56px 1fr auto; gap: .8rem; align-items: center; padding: .8rem 0; border-bottom: 1px solid var(--border); }
+.cart-thumb { width: 56px; height: 70px; background: #efe3d2; border-radius: 8px; overflow: hidden; }
+.cart-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item h4 { font-size: .9rem; font-weight: 500; }
+.cart-item .p { font-size: .85rem; color: var(--mid-brown); margin: 2px 0 6px; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 20px; }
+.qty button { width: 28px; height: 28px; background: none; border: none; cursor: pointer; font-size: 1rem; color: var(--text); }
+.qty span { min-width: 22px; text-align: center; font-size: .85rem; }
+.remove { background: none; border: none; color: var(--text-muted); font-size: .78rem; cursor: pointer; text-decoration: underline; }
+.cart-footer { border-top: 1px solid var(--border); padding-top: 1.1rem; }
+.cart-total { display: flex; justify-content: space-between; font-weight: 500; margin-bottom: 1rem; }
+.btn-checkout { width: 100%; background: var(--deep-brown); color: var(--gold-light); border: none; padding: 14px; border-radius: 12px; font-size: .95rem; cursor: pointer; transition: background .2s; }
+.btn-checkout:hover { background: var(--mid-brown); }
+.btn-checkout:disabled { opacity: .45; cursor: not-allowed; }
+.cart-note { font-size: .78rem; color: var(--text-muted); margin-top: .7rem; text-align: center; }
+
+@media (max-width: 900px) {
+  .nav-links, .btn-cart.desktop { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  section { padding: 60px 5%; }
+  .hero-content { padding: 6% 5%; }
+  footer { padding: 24px 5%; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="logo">cloths</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#shop">Categories</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-cart" id="navCart">Cart (0)</button>
+    <button class="hamburger" id="openMenu" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="closeMenu" aria-label="Close menu">&times;</button>
+  <a href="#home">Home</a>
+  <a href="#shop">Categories</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section id="home" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Kurtas, sarees and lehengas for every occasion</h1>
+    <p>Pick your outfit, add it to the cart and send your order on WhatsApp.</p>
+    <a href="#products" class="btn-primary">Shop now</a>
+  </div>
+</section>
+
+<section id="shop">
+  <h2 class="section-title">Shop by category</h2>
+  <p class="section-sub">Choose a category to see its products.</p>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<section id="products">
+  <h2 class="section-title">Our products</h2>
+  <p class="section-sub">Prices are in Indian rupees.</p>
+  <div class="filters" id="filters"></div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Order or ask a question</h2>
+  <p class="section-sub">Call or message us on 9876543210.</p>
+  <div class="contact-row">
+    <a class="btn-primary" id="waLink" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    <a class="btn-outline" href="tel:+919876543210">Call 9876543210</a>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 cloths. All rights reserved.</span>
+  <span>Website by <a href="https://arunwebcraft.com" target="_blank" rel="noopener">Arun WebCraft</a></span>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Cart">
+  <div class="cart-header">
+    <h2>Your cart</h2>
+    <button class="cart-close" id="closeCart" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="cart-list" id="cartList"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="btn-checkout" id="checkoutBtn" disabled>Order on WhatsApp</button>
+    <p class="cart-note">Your order opens in WhatsApp. Payment and delivery are confirmed there.</p>
+  </div>
+</aside>
+
+<script>
+// ============ EDIT THIS SECTION ============
+const PHONE = '919876543210';            // WhatsApp number with country code
+// image = file name inside the images/ folder
+const PRODUCTS = [
+  { id: 1,  name: 'Chikankari Kurta',        cat: 'Kurtas',   price: 2499,  image: 'chikankari-kurta.jpeg' },
+  { id: 2,  name: 'Chanderi Straight Kurta', cat: 'Kurtas',   price: 1899,  image: 'chanderi-kurta.jpeg' },
+  { id: 3,  name: 'Block Print Kurta Set',   cat: 'Kurtas',   price: 3299,  image: 'block-print-kurta-set.jpeg' },
+  { id: 4,  name: 'Anarkali Suit',           cat: 'Kurtas',   price: 4499,  image: 'anarkali-suit.jpeg' },
+  { id: 5,  name: 'Banarasi Silk Saree',     cat: 'Sarees',   price: 8999,  image: 'banarasi-saree.jpeg' },
+  { id: 6,  name: 'Kanjivaram Saree',        cat: 'Sarees',   price: 12499, image: 'kanjivaram-saree.jpeg' },
+  { id: 7,  name: 'Georgette Saree',         cat: 'Sarees',   price: 2999,  image: 'georgette-saree.jpeg' },
+  { id: 8,  name: 'Bridal Lehenga',          cat: 'Lehengas', price: 24999, image: 'bridal-lehenga.jpeg' },
+  { id: 9,  name: 'Festive Lehenga Choli',   cat: 'Lehengas', price: 7499,  image: 'festive-lehenga.jpeg' },
+  { id: 10, name: 'Sharara Set',             cat: 'Lehengas', price: 5999,  image: 'sharara-set.jpeg' }
+];
+// category image = images/<name in lowercase>.jpeg  (kurtas.jpeg, sarees.jpeg, lehengas.jpeg)
+// ===========================================
+
+const $ = id => document.getElementById(id);
+const money = n => '₹' + n.toLocaleString('en-IN');
+const cats = [...new Set(PRODUCTS.map(p => p.cat))];
+let activeCat = 'All';
+let cart = {}; // id -> qty
+
+function imgTag(src, alt) {
+  return `<img src="images/${src}" alt="${alt}" loading="lazy" onerror="this.parentNode.textContent='${alt.replace(/'/g, '')}'">`;
+}
+
+function renderCategories() {
+  $('categoryGrid').innerHTML = cats.map(c => {
+    const n = PRODUCTS.filter(p => p.cat === c).length;
+    return `<button class="cat-card" data-cat="${c}">
+      <img src="images/${c.toLowerCase()}.jpeg" alt="${c}" loading="lazy" onerror="this.style.display='none'">
+      <div class="cat-label"><strong>${c}</strong><span>${n} ${n === 1 ? 'item' : 'items'}</span></div>
+    </button>`;
+  }).join('');
+  document.querySelectorAll('.cat-card').forEach(b => b.addEventListener('click', () => {
+    setFilter(b.dataset.cat);
+    $('products').scrollIntoView({ behavior: 'smooth' });
+  }));
+}
+
+function renderFilters() {
+  $('filters').innerHTML = ['All', ...cats].map(c =>
+    `<button class="filter ${c === activeCat ? 'active' : ''}" data-cat="${c}">${c}</button>`).join('');
+  document.querySelectorAll('.filter').forEach(b => b.addEventListener('click', () => setFilter(b.dataset.cat)));
+}
+
+function setFilter(c) { activeCat = c; renderFilters(); renderProducts(); }
+
+function renderProducts() {
+  const list = activeCat === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.cat === activeCat);
+  $('productGrid').innerHTML = list.map(p => `
+    <article class="product-card">
+      <div class="product-img">${imgTag(p.image, p.name)}</div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="cat">${p.cat}</div>
+        <div class="price">${money(p.price)}</div>
+        <button class="btn-add" data-id="${p.id}">Add to cart</button>
+      </div>
+    </article>`).join('');
+  document.querySelectorAll('.btn-add').forEach(b => b.addEventListener('click', () => addToCart(+b.dataset.id)));
+}
+
+function addToCart(id) { cart[id] = (cart[id] || 0) + 1; renderCart(); openCart(); }
+function changeQty(id, d) { cart[id] = (cart[id] || 0) + d; if (cart[id] <= 0) delete cart[id]; renderCart(); }
+
+function renderCart() {
+  const ids = Object.keys(cart).map(Number);
+  const count = ids.reduce((s, id) => s + cart[id], 0);
+  const total = ids.reduce((s, id) => s + cart[id] * PRODUCTS.find(p => p.id === id).price, 0);
+  $('navCart').textContent = `Cart (${count})`;
+  $('cartTotal').textContent = money(total);
+  $('checkoutBtn').disabled = count === 0;
+  if (!ids.length) {
+    $('cartList').innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add a product to start your order.</div>';
+    return;
+  }
+  $('cartList').innerHTML = ids.map(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    return `<div class="cart-item">
+      <div class="cart-thumb">${imgTag(p.image, p.name)}</div>
+      <div><h4>${p.name}</h4><div class="p">${money(p.price)}</div>
+        <div class="qty"><button data-d="-1" data-id="${id}" aria-label="Decrease">&minus;</button><span>${cart[id]}</span><button data-d="1" data-id="${id}" aria-label="Increase">+</button></div>
+      </div>
+      <button class="remove" data-d="-999" data-id="${id}">Remove</button>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('#cartList [data-d]').forEach(b => b.addEventListener('click', () => changeQty(+b.dataset.id, +b.dataset.d)));
+}
+
+function openCart() { $('cartDrawer').classList.add('open'); $('overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeCart() { $('cartDrawer').classList.remove('open'); $('overlay').classList.remove('open'); document.body.style.overflow = ''; }
+
+function checkout() {
+  const ids = Object.keys(cart).map(Number);
+  if (!ids.length) return;
+  let total = 0;
+  const lines = ids.map(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    total += p.price * cart[id];
+    return `- ${p.name} x ${cart[id]} = ${money(p.price * cart[id])}`;
+  });
+  const msg = `Hello cloths, I want to order:\n${lines.join('\n')}\nTotal: ${money(total)}`;
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+}
+
+$('navCart').addEventListener('click', openCart);
+$('closeCart').addEventListener('click', closeCart);
+$('overlay').addEventListener('click', closeCart);
+$('checkoutBtn').addEventListener('click', checkout);
+$('waLink').href = `https://wa.me/${PHONE}?text=${encodeURIComponent('Hello cloths, I have a question.')}`;
+
+function toggleMenu(open) { $('mobileMenu').classList.toggle('open', open); document.body.style.overflow = open ? 'hidden' : ''; }
+$('openMenu').addEventListener('click', () => toggleMenu(true));
+$('closeMenu').addEventListener('click', () => toggleMenu(false));
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+renderCategories(); renderFilters(); renderProducts(); renderCart();
+</script>
+</body>
+</html>
